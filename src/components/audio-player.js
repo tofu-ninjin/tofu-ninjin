@@ -19,7 +19,7 @@ const {
 class AudioPlayer extends React.Component {
   render() {
     return (
-      <Media className={styles.media}>
+      <Media>
         <div>
           <Player src={this.props.src} />
           <div className={styles.controls}>
