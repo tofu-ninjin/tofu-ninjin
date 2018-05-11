@@ -1,6 +1,8 @@
 module.exports = {
   siteMetadata: {
     title: 'Tofuにんじん',
+    description: '',
+    siteUrl: 'https://tofu-ninjin.netlify.com'
   },
   plugins: [
     {
