@@ -1,8 +1,10 @@
 module.exports = {
   siteMetadata: {
     title: 'Tofuにんじん',
-    description: '',
-    siteUrl: 'https://tofu-ninjin.netlify.com'
+    description: 'Tofuとにんじんがプログラミングなどについてゆるく雑談するラジオ',
+    siteUrl: 'https://tofu-ninjin.netlify.com',
+    copyright: '2018 tofu-jinjin',
+    language: 'ja'
   },
   plugins: [
     {
@@ -26,6 +28,38 @@ module.exports = {
             }
           }
         }`,
+        setup: ({
+          query: {
+            site: { siteMetadata },
+            ...rest
+          },
+        }) => {
+          return {
+            custom_namespaces: {
+              itunes: 'http://www.itunes.com/dtds/podcast-1.0.dtd'
+            },
+            custom_elements: [
+              {
+                'itunes:image': {
+                  _attr: {
+                    href: `${siteMetadata.siteUrl}/itunes-artwork.png`
+                  }
+                }
+              },
+              {
+                'itunes:category': {
+                  _attr: {
+                    text: 'Technology'
+                  }
+                }
+              },
+              { 'itunes:summary': siteMetadata.description },
+              { 'itunes:explicit': 'no' }
+            ],
+            ...siteMetadata,
+            ...rest
+          }
+        },
         feeds: [
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
