@@ -46,6 +46,9 @@ module.exports = {
             },
             custom_elements: [
               {
+                'itunes:author': siteMetadata.owner
+              },
+              {
                 'itunes:image': {
                   _attr: {
                     href: `${siteMetadata.siteUrl}/itunes-artwork.png`
