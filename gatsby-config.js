@@ -23,6 +23,8 @@ module.exports = {
             siteMetadata {
               title
               description
+              language
+              copyright
               siteUrl
               site_url: siteUrl
             }
