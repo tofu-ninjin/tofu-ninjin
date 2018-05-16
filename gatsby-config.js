@@ -3,6 +3,8 @@ module.exports = {
     title: 'Tofuにんじん',
     description: 'Tofuとにんじんがプログラミングなどについてゆるく雑談するラジオ',
     siteUrl: 'https://tofu-ninjin.netlify.com',
+    owner: 'tofu-ninjin',
+    email: 'tofu.ninjin@gmail.com',
     copyright: '2018 tofu-ninjin',
     language: 'ja'
   },
@@ -23,6 +25,8 @@ module.exports = {
             siteMetadata {
               title
               description
+              owner
+              email
               language
               copyright
               siteUrl
@@ -54,6 +58,12 @@ module.exports = {
                     text: 'Technology'
                   }
                 }
+              },
+              {
+                'itunes:owner': [
+                  { 'itunes:name': siteMetadata.owner },
+                  { 'itunes:email': siteMetadata.email }
+                ]
               },
               { 'itunes:summary': siteMetadata.description },
               { 'itunes:explicit': 'no' }
