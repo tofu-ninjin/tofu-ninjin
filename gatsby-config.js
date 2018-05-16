@@ -3,7 +3,7 @@ module.exports = {
     title: 'Tofuにんじん',
     description: 'Tofuとにんじんがプログラミングなどについてゆるく雑談するラジオ',
     siteUrl: 'https://tofu-ninjin.netlify.com',
-    copyright: '2018 tofu-jinjin',
+    copyright: '2018 tofu-ninjin',
     language: 'ja'
   },
   plugins: [
