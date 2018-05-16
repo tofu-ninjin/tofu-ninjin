@@ -1,4 +1,5 @@
 const path = require('path')
+const fs = require('fs')
 const { createFilePath } = require('gatsby-source-filesystem')
 
 exports.onCreateNode = ({ node, getNode, boundActionCreators }) => {
@@ -41,5 +42,16 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
       })
       resolve()
     })
+  })
+}
+
+exports.onPostBuild = () => {
+  // RSSに指定する用のロゴ画像をpublicディレクトリにコピー
+  const src = path.resolve('./src/favicon.png')
+  const dest = path.resolve('./public/itunes-artwork.png')
+  fs.copyFile(src, dest, (err) => {
+    if (err) {
+      console.error(err.stack)
+    }
   })
 }
