@@ -14,7 +14,10 @@ const Layout = ({ children, data }) => (
         { name: 'description', content: data.site.siteMetadata.description },
       ]}
     />
-    <Header siteTitle={data.site.siteMetadata.title} />
+    <Header
+      siteTitle={data.site.siteMetadata.title}
+      logoSrc={data.logo.childImageSharp.resize.src}
+    />
     <div
       style={{
         margin: '0 auto',
@@ -40,6 +43,13 @@ export const query = graphql`
       siteMetadata {
         title
         description
+      }
+    }
+    logo: file(relativePath: { eq: "logo.png" }) {
+      childImageSharp {
+        resize(width: 70, height: 70) {
+          src
+        }
       }
     }
   }
