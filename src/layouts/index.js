@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
+import { Container } from 'semantic-ui-react'
 
 import Header from '../components/header'
 import 'semantic-ui-css/semantic.min.css'
@@ -18,16 +19,9 @@ const Layout = ({ children, data }) => (
       siteTitle={data.site.siteMetadata.title}
       logoSrc={data.logo.childImageSharp.resize.src}
     />
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '0px 1.0875rem 1.45rem',
-        paddingTop: 0,
-      }}
-    >
+    <Container text style={{ marginTop: '7em' }}>
       {children()}
-    </div>
+    </Container>
   </div>
 )
 
