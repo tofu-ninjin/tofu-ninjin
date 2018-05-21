@@ -150,4 +150,7 @@ module.exports = {
     'gatsby-transformer-yaml',
     'gatsby-plugin-react-helmet'
   ],
+  mapping: {
+    'MarkdownRemark.frontmatter.speakers': 'SpeakersYaml'
+  }
 }
