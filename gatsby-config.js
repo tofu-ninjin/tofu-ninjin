@@ -17,6 +17,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/data`,
+        name: 'data',
+      },
+    },
+    {
       resolve: 'gatsby-plugin-feed',
       options: {
         query: `
@@ -140,6 +147,7 @@ module.exports = {
     },
     'gatsby-plugin-sass',
     'gatsby-transformer-remark',
+    'gatsby-transformer-yaml',
     'gatsby-plugin-react-helmet'
   ],
 }
