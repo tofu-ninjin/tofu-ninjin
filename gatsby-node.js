@@ -47,7 +47,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
 exports.onPostBuild = () => {
   // RSSに指定する用のロゴ画像をpublicディレクトリにコピー
-  const src = path.resolve('./src/favicon.png')
+  const src = path.resolve('./src/images/logo.png')
   const dest = path.resolve('./public/itunes-artwork.png')
   fs.copyFile(src, dest, (err) => {
     if (err) {

@@ -24,6 +24,13 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/src/images`,
+        name: 'images',
+      },
+    },
+    {
       resolve: 'gatsby-plugin-feed',
       options: {
         query: `
@@ -130,7 +137,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-favicon',
       options: {
-        logo: './src/favicon.png',
+        logo: './src/images/logo.png',
         injectHTML: true,
         icons: {
           android: true,
