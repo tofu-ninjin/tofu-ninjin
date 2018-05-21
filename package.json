@@ -15,7 +15,9 @@
     "gatsby-transformer-yaml": "^1.5.17",
     "react-helmet": "^5.2.0",
     "react-media-player": "^0.7.1",
-    "react-motion-ui-pack": "^0.10.3"
+    "react-motion-ui-pack": "^0.10.3",
+    "semantic-ui-css": "^2.3.1",
+    "semantic-ui-react": "^0.80.0"
   },
   "scripts": {
     "build": "gatsby build",
