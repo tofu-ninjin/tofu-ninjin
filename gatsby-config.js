@@ -146,8 +146,10 @@ module.exports = {
       }
     },
     'gatsby-plugin-sass',
+    'gatsby-plugin-sharp',
     'gatsby-transformer-remark',
     'gatsby-transformer-yaml',
+    'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet'
   ],
   mapping: {
