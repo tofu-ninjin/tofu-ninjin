@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
+import { Container } from 'semantic-ui-react'
 
 import Header from '../components/header'
+import 'semantic-ui-css/semantic.min.css'
 import './index.css'
 
 const Layout = ({ children, data }) => (
@@ -13,17 +15,13 @@ const Layout = ({ children, data }) => (
         { name: 'description', content: data.site.siteMetadata.description },
       ]}
     />
-    <Header siteTitle={data.site.siteMetadata.title} />
-    <div
-      style={{
-        margin: '0 auto',
-        maxWidth: 960,
-        padding: '0px 1.0875rem 1.45rem',
-        paddingTop: 0,
-      }}
-    >
+    <Header
+      siteTitle={data.site.siteMetadata.title}
+      logoSrc={data.logo.childImageSharp.resize.src}
+    />
+    <Container text style={{ marginTop: '7em' }}>
       {children()}
-    </div>
+    </Container>
   </div>
 )
 
@@ -39,6 +37,13 @@ export const query = graphql`
       siteMetadata {
         title
         description
+      }
+    }
+    logo: file(relativePath: { eq: "logo.png" }) {
+      childImageSharp {
+        resize(width: 70, height: 70) {
+          src
+        }
       }
     }
   }

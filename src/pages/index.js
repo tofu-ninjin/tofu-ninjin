@@ -1,25 +1,38 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { navigateTo } from 'gatsby-link'
+import { Card, Header } from 'semantic-ui-react'
 
 export default class IndexPage extends React.Component {
   render() {
     const episodes = this.props.data.allMarkdownRemark.edges
 
     return (
-      <div>
+      <Card.Group>
         {episodes.map(({ node }) => {
           return (
-            <div key={node.fields.slug}>
-              <h3>
-                <Link style={{ boxShadow: 'none' }} to={node.fields.slug}>
-                  {node.frontmatter.title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-            </div>
+            <Card
+              fluid
+              link
+              key={node.fields.slug}
+              style={{ margin: '.5em' }}
+              href={node.fields.slug}
+              onClick={(event) => {
+                event.preventDefault()
+                navigateTo(node.fields.slug)
+              }}
+            >
+              <Card.Content>
+                <Card.Header>
+                  <Header as='h2'>{node.frontmatter.title}</Header>
+                </Card.Header>
+                <Card.Meta>
+                  {node.frontmatter.date}
+                </Card.Meta>
+              </Card.Content>
+            </Card>
           )
         })}
-      </div>
+      </Card.Group>
     )
   }
 }
