@@ -10,7 +10,7 @@ const Header = ({ siteTitle, logoSrc }) => (
   <Menu fixed='top'>
     <Container text>
       <Link to='/'>
-        <Menu.Item as='a' header>
+        <Menu.Item link header>
           <Image
             size='mini'
             src={logoSrc}
