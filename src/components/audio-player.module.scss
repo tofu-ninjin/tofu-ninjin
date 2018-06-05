@@ -1,10 +1,11 @@
 @import "./range-mixins.scss";
 
 .controls {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(202px, 1fr)) 181px;
   align-items: center;
-  padding: 12px;
-  margin: 40px 0;
+  padding: 6px;
+  margin: 30px 0;
   background-color: #282F31;
   color: #fff;
 
@@ -97,6 +98,15 @@
 
 .controlGroupSeek {
   flex: 1;
+
+  @media only screen and (max-width: 660px) {
+    margin: 10px;
+    grid-area: 2 / 1 / 2 / 3;
+  }
+}
+
+.controlGroupVolume {
+  margin-left: auto;
 }
 
 .control {
