@@ -1,3 +1,5 @@
+const episodeHelper = require('./src/helpers/episode')
+
 module.exports = {
   siteMetadata: {
     title: 'Tofuにんじん',
@@ -93,18 +95,20 @@ module.exports = {
           {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map(edge => {
+                const subtitle = episodeHelper.generateSubtitle(edge.node.frontmatter.topics, edge.node.frontmatter.speakers)
+
                 return Object.assign({}, edge.node.frontmatter, {
-                  description: edge.node.excerpt,
+                  description: edge.node.html,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   enclosure: {
                     url: edge.node.frontmatter.audio.url
                   },
                   custom_elements: [
-                    { 'content:encoded': edge.node.html }
+                    { 'itunes:subtitile': subtitle }
                   ]
-                });
-              });
+                })
+              })
             },
             query: `
             {
@@ -119,9 +123,14 @@ module.exports = {
                     fields { slug }
                     frontmatter {
                       title
+                      topics
                       date
                       audio {
                         url
+                      }
+                      speakers {
+                        id
+                        name
                       }
                     }
                   }
