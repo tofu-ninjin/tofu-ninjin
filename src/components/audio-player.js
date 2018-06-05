@@ -25,9 +25,11 @@ class AudioPlayer extends React.Component {
           <div className={styles.controls}>
             <div className={styles.controlGroup}>
               <PlayPause className={styles.control} />
-              <CurrentTime className={`${styles.control} ${styles.currentTime}`} />
-              <span>/</span>
-              <Duration className={styles.control} />
+              <div className={styles.controlGroupTime}>
+                <CurrentTime className={styles.currentTime} />
+                <span className={styles.timeDivider}>/</span>
+                <Duration/>
+              </div>
             </div>
             <div className={`${styles.controlGroup} ${styles.controlGroupSeek}`}>
               <Progress className={`${styles.control} ${styles.progress}`} />
@@ -35,7 +37,7 @@ class AudioPlayer extends React.Component {
             </div>
             <div className={`${styles.controlGroupVolume} ${styles.controlGroup}`}>
               <MuteUnmute className={styles.control} />
-              <Volume className={`${styles.control} ${styles.volume}`} />
+              <Volume className={`${styles.volume} ${styles.control}`} />
             </div>
           </div>
         </div>
