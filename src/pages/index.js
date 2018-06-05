@@ -1,6 +1,7 @@
 import React from 'react'
 import { navigateTo } from 'gatsby-link'
 import { Card, Header } from 'semantic-ui-react'
+import { generateSubtitle } from '../helpers/episode'
 
 export default class IndexPage extends React.Component {
   render() {
@@ -9,6 +10,8 @@ export default class IndexPage extends React.Component {
     return (
       <Card.Group>
         {episodes.map(({ node }) => {
+          const subtitle = generateSubtitle(node.frontmatter.topics, node.frontmatter.speakers)
+
           return (
             <Card
               fluid
@@ -28,6 +31,9 @@ export default class IndexPage extends React.Component {
                 <Card.Meta>
                   {node.frontmatter.date}
                 </Card.Meta>
+                <Card.Description>
+                  {subtitle}
+                </Card.Description>
               </Card.Content>
             </Card>
           )
@@ -47,6 +53,11 @@ export const pageQuery = graphql`
           }
           frontmatter {
             title
+            topics
+            speakers {
+              id
+              name
+            }
             date(formatString: "YYYY-MM-DD")
           }
         }
