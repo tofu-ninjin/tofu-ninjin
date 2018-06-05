@@ -2,7 +2,7 @@
 
 .controls {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(202px, 1fr)) 181px;
+  grid-template-columns: 6fr 7fr 6fr;
   align-items: center;
   padding: 6px;
   margin: 30px 0;
@@ -27,7 +27,7 @@
 
     width: 100%;
     height: 12px;
-    padding: 0 12px;
+    padding: 0;
     margin: 0;
     background-color: transparent;
 
@@ -88,12 +88,23 @@
       top: -2.5px;
     }
   }
+
+  @media only screen and (max-width: 660px) {
+    grid-template-columns: 1fr 1fr;
+    font-size: 2.6vw;
+  }
 }
 
 .controlGroup {
   display: flex;
   align-items: center;
   position: relative;
+}
+
+.controlGroupTime {
+  width: 100%;
+  max-width: 110px;
+  margin-right: 12px;
 }
 
 .controlGroupSeek {
@@ -107,6 +118,7 @@
 
 .controlGroupVolume {
   margin-left: auto;
+  padding-right: 12px;
 }
 
 .control {
@@ -114,19 +126,21 @@
 }
 
 .currentTime {
-  width: 60px;
   text-align: right;
+}
+
+.timeDivider {
+  margin: 0 4px;
 }
 
 .progress {
   -webkit-appearance: none;
-  width: calc(100% - 24px);
+  width: 100%;
   height: 3px;
-  margin: 0 12px;
+  margin: 0;
   border: 0;
   position: absolute;
   top: 7px;
-  left: 12px;
 
   // bar
   background-color: #373d3f;
@@ -154,5 +168,6 @@
 }
 
 .volume {
-  max-width: 120px;
+  max-width: 110px;
+  margin-right: 12px;
 }
