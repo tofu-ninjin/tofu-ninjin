@@ -105,7 +105,8 @@ module.exports = {
                     url: edge.node.frontmatter.audio.url
                   },
                   custom_elements: [
-                    { 'itunes:subtitile': subtitle }
+                    { 'itunes:subtitile': subtitle },
+                    { 'itunes:duration': edge.node.frontmatter.audio.duration },
                   ]
                 })
               })
@@ -127,6 +128,7 @@ module.exports = {
                       date
                       audio {
                         url
+                        duration
                       }
                       speakers {
                         id
