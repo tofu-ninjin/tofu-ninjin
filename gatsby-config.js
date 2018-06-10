@@ -163,6 +163,14 @@ module.exports = {
         }
       }
     },
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: 'UA-86917545-2',
+        anonymize: true,
+        respectDNT: true
+      },
+    },
     'gatsby-plugin-sass',
     'gatsby-plugin-sharp',
     'gatsby-transformer-remark',
