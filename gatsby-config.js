@@ -96,9 +96,10 @@ module.exports = {
             serialize: ({ query: { site, allMarkdownRemark } }) => {
               return allMarkdownRemark.edges.map(edge => {
                 const subtitle = episodeHelper.generateSubtitle(edge.node.frontmatter.topics, edge.node.frontmatter.speakers)
+                const subtitleHTML = `<p>${subtitle}</p>`
 
                 return Object.assign({}, edge.node.frontmatter, {
-                  description: edge.node.html,
+                  description: subtitleHTML + edge.node.html,
                   url: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
                   enclosure: {
