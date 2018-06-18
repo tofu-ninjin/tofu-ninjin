@@ -1,6 +1,6 @@
 import React from 'react'
 import { navigateTo } from 'gatsby-link'
-import { Card, Header } from 'semantic-ui-react'
+import { Card, Header, Image } from 'semantic-ui-react'
 import { generateSubtitle } from '../helpers/episode'
 
 export default class IndexPage extends React.Component {
@@ -35,6 +35,13 @@ export default class IndexPage extends React.Component {
                   {subtitle}
                 </Card.Description>
               </Card.Content>
+              <Card.Content extra>
+                {node.frontmatter.speakers.map((speaker) => {
+                  return (
+                    <Image src={speaker.imageUrl} key={speaker.id} avatar />
+                  )
+                })}
+              </Card.Content>
             </Card>
           )
         })}
@@ -57,6 +64,7 @@ export const pageQuery = graphql`
             speakers {
               id
               name
+              imageUrl
             }
             date(formatString: "YYYY-MM-DD")
           }
