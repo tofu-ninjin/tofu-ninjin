@@ -1,7 +1,9 @@
 import React from 'react'
-import { Card, Header } from 'semantic-ui-react'
+import Link from 'gatsby-link'
+import { Card, Grid, Image } from 'semantic-ui-react'
 import AudioPlayer from '../components/audio-player'
 import { generateSubtitle } from '../helpers/episode'
+import styles from './episode.module.scss'
 
 export default class EpisodeTemplate extends React.Component {
   render() {
@@ -14,6 +16,20 @@ export default class EpisodeTemplate extends React.Component {
           <h1>{post.frontmatter.title}</h1>
           <p>{subtitle}</p>
           <AudioPlayer src={post.frontmatter.audio.url}></AudioPlayer>
+          <div className={styles.speakers}>
+            <Grid doubling columns={3}>
+              {post.frontmatter.speakers.map((speaker) => {
+                return (
+                  <Grid.Column key={speaker.id}>
+                    <Link to={speaker.fields.slug}>
+                      <Image src={speaker.imageUrl} avatar />
+                      <span>{speaker.name}</span>
+                    </Link>
+                  </Grid.Column>
+                )
+              })}
+            </Grid>
+          </div>
           <div dangerouslySetInnerHTML={{ __html: post.html }} />
         </Card.Content>
       </Card>
@@ -34,6 +50,10 @@ export const query = graphql`
         speakers {
           id
           name
+          imageUrl
+          fields {
+            slug
+          }
         }
       }
     }
