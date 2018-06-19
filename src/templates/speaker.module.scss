@@ -1,0 +1,18 @@
+.header {
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+}
+
+.headerName {
+  margin-right: 1.2rem;
+}
+
+.episodeList {
+  margin: 3rem 4rem 1rem;
+
+  @media only screen and (max-width: 660px) {
+    margin: 3rem 0 1rem;
+  }
+}
