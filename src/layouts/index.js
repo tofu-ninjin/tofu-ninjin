@@ -18,12 +18,12 @@ const Layout = ({ children, data }) => (
         { property: 'og:description', content: data.site.siteMetadata.description },
         { property: 'og:locale', content: 'ja_JP' },
         { property: 'og:site_name', content: data.site.siteMetadata.title },
-        { property: 'og:image', content: data.site.siteMetadata.siteUrl + data.logo.childImageSharp.large.src },
+        { property: 'og:image', content: data.site.siteMetadata.siteUrl + data.logo.childImageSharp.resize.src },
       ]}
     />
     <Header
       siteTitle={data.site.siteMetadata.title}
-      logoSrc={data.logo.childImageSharp.small.src}
+      logoSrc={data.logoTransparent.childImageSharp.resize.src}
     />
     <Container text style={{ marginTop: '7em' }}>
       {children()}
@@ -46,12 +46,16 @@ export const query = graphql`
         siteUrl
       }
     }
-    logo: file(relativePath: { eq: "logo.png" }) {
+    logoTransparent: file(relativePath: { eq: "logo.png" }) {
       childImageSharp {
-        small: resize(width: 70, height: 70) {
+        resize(width: 70, height: 70) {
           src
         }
-        large: resize(width: 400, height: 400) {
+      }
+    }
+    logo: file(relativePath: { eq: "logo.jpg" }) {
+      childImageSharp {
+        resize(width: 400, height: 400, quality: 90) {
           src
         }
       }
