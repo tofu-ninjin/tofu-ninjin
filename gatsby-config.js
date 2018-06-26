@@ -67,7 +67,7 @@ module.exports = {
               {
                 'itunes:image': {
                   _attr: {
-                    href: `${siteMetadata.siteUrl}/itunes-artwork.png`
+                    href: `${siteMetadata.siteUrl}/itunes-artwork.jpg`
                   }
                 }
               },
@@ -160,7 +160,8 @@ module.exports = {
           firefox: true,
           twitter: false,
           yandex: false,
-          windows: false
+          windows: false,
+          opengraph: true,
         }
       }
     },
