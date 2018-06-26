@@ -13,11 +13,17 @@ const Layout = ({ children, data }) => (
       title={data.site.siteMetadata.title}
       meta={[
         { name: 'description', content: data.site.siteMetadata.description },
+        { property: 'og:title', content: data.site.siteMetadata.title },
+        { property: 'og:type', content: 'article' },
+        { property: 'og:description', content: data.site.siteMetadata.description },
+        { property: 'og:locale', content: 'ja_JP' },
+        { property: 'og:site_name', content: data.site.siteMetadata.title },
+        { property: 'og:image', content: data.site.siteMetadata.siteUrl + data.logo.childImageSharp.large.src },
       ]}
     />
     <Header
       siteTitle={data.site.siteMetadata.title}
-      logoSrc={data.logo.childImageSharp.resize.src}
+      logoSrc={data.logo.childImageSharp.small.src}
     />
     <Container text style={{ marginTop: '7em' }}>
       {children()}
@@ -37,11 +43,15 @@ export const query = graphql`
       siteMetadata {
         title
         description
+        siteUrl
       }
     }
     logo: file(relativePath: { eq: "logo.png" }) {
       childImageSharp {
-        resize(width: 70, height: 70) {
+        small: resize(width: 70, height: 70) {
+          src
+        }
+        large: resize(width: 400, height: 400) {
           src
         }
       }

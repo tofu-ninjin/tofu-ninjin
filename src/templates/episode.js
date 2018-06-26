@@ -17,6 +17,8 @@ export default class EpisodeTemplate extends React.Component {
           title={post.frontmatter.title}
           meta={[
             { name: 'description', content: subtitle },
+            { property: 'og:title', content: post.frontmatter.title },
+            { property: 'og:description', content: subtitle },
           ]}
         />
         <Card fluid>
