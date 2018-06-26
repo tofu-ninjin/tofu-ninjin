@@ -7,6 +7,7 @@ import styles from './speaker.module.scss'
 export default class SpeakerTemplate extends React.Component {
   render() {
     const speaker = this.props.data.speakersYaml
+    const title = `${speaker.name} | 出演者`
     const episodes = this.props.data.allMarkdownRemark.edges
       .map((edge) => edge.node)
       .filter((node) => {
@@ -17,7 +18,12 @@ export default class SpeakerTemplate extends React.Component {
 
     return (
       <div>
-        <Helmet title={`${speaker.name} | 出演者`} />
+        <Helmet
+          title={title}
+          meta={[
+            { property: 'og:title', content: title },
+          ]}
+        />
         <Segment>
           <Image src={speaker.imageUrl} size='small' centered circular></Image>
           <Header as='h2' textAlign='center' className={styles.header}>
