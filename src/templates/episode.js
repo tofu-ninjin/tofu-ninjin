@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
-import { Card, Grid, Image } from 'semantic-ui-react'
+import { Grid, Image, Segment } from 'semantic-ui-react'
 import AudioPlayer from '../components/audio-player'
 import { generateSubtitle } from '../helpers/episode'
 import styles from './episode.module.scss'
@@ -22,28 +22,29 @@ export default class EpisodeTemplate extends React.Component {
             { property: 'og:url', content: this.props.data.site.siteMetadata.siteUrl + this.props.location.pathname }
           ]}
         />
-        <Card fluid>
-          <Card.Content>
-            <h1>{post.frontmatter.title}</h1>
-            <p>{subtitle}</p>
-            <AudioPlayer src={post.frontmatter.audio.url}></AudioPlayer>
-            <div className={styles.speakers}>
-              <Grid doubling columns={3}>
-                {post.frontmatter.speakers.map((speaker) => {
-                  return (
-                    <Grid.Column key={speaker.id}>
-                      <Link to={speaker.fields.slug}>
-                        <Image src={speaker.imageUrl} avatar />
-                        <span>{speaker.name}</span>
-                      </Link>
-                    </Grid.Column>
-                  )
-                })}
-              </Grid>
-            </div>
-            <div dangerouslySetInnerHTML={{ __html: post.html }} />
-          </Card.Content>
-        </Card>
+        <Segment>
+          <h1>{post.frontmatter.title}</h1>
+          <p>{subtitle}</p>
+          <AudioPlayer src={post.frontmatter.audio.url}></AudioPlayer>
+          <div className={styles.speakers}>
+            <Grid doubling columns={3}>
+              {post.frontmatter.speakers.map((speaker) => {
+                return (
+                  <Grid.Column key={speaker.id}>
+                    <Link to={speaker.fields.slug}>
+                      <Image src={speaker.imageUrl} avatar />
+                      <span>{speaker.name}</span>
+                    </Link>
+                  </Grid.Column>
+                )
+              })}
+            </Grid>
+          </div>
+          <div
+            className={styles.episodeContent}
+            dangerouslySetInnerHTML={{ __html: post.html }}
+          />
+        </Segment>
       </div>
     )
   }
