@@ -1,3 +1,14 @@
+.episodeContent {
+  font-size: 1.2rem;
+  li > p {
+    margin: 0 0 4px;
+  }
+  & > ul > li {
+    margin-bottom: 8px;
+  }
+}
+
 .speakers {
+  font-size: 1.2rem;
   margin-bottom: 30px;
 }
