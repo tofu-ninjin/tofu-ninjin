@@ -22,6 +22,7 @@ export default class SpeakerTemplate extends React.Component {
           title={title}
           meta={[
             { property: 'og:title', content: title },
+            { property: 'og:url', content: this.props.data.site.siteMetadata.siteUrl + this.props.location.pathname }
           ]}
         />
         <Segment>
@@ -80,6 +81,11 @@ export const query = graphql`
             }
           }
         }
+      }
+    }
+    site {
+      siteMetadata {
+        siteUrl
       }
     }
   }

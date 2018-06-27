@@ -19,6 +19,7 @@ const Layout = ({ children, data }) => (
         { property: 'og:locale', content: 'ja_JP' },
         { property: 'og:site_name', content: data.site.siteMetadata.title },
         { property: 'og:image', content: data.site.siteMetadata.siteUrl + data.logo.childImageSharp.resize.src },
+        { property: 'og:url', content: data.site.siteMetadata.siteUrl }
       ]}
     />
     <Header

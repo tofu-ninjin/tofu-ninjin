@@ -19,6 +19,7 @@ export default class EpisodeTemplate extends React.Component {
             { name: 'description', content: subtitle },
             { property: 'og:title', content: post.frontmatter.title },
             { property: 'og:description', content: subtitle },
+            { property: 'og:url', content: this.props.data.site.siteMetadata.siteUrl + this.props.location.pathname }
           ]}
         />
         <Card fluid>
@@ -66,6 +67,11 @@ export const query = graphql`
             slug
           }
         }
+      }
+    }
+    site {
+      siteMetadata {
+        siteUrl
       }
     }
   }
