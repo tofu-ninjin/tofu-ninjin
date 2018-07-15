@@ -1,7 +1,7 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import Link from 'gatsby-link'
-import { Grid, Image, Segment } from 'semantic-ui-react'
+import { Grid, Icon, Image, Segment } from 'semantic-ui-react'
 import AudioPlayer from '../components/audio-player'
 import { generateSubtitle } from '../helpers/episode'
 import styles from './episode.module.scss'
@@ -10,6 +10,10 @@ export default class EpisodeTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
     const subtitle = generateSubtitle(post.frontmatter.topics, post.frontmatter.speakers)
+    const episodeUrl = this.props.data.site.siteMetadata.siteUrl + this.props.location.pathname
+    const escapedTitle = encodeURIComponent(post.frontmatter.title)
+    const escapedEpisodeUrl = encodeURIComponent(episodeUrl)
+    const tweetUrl = `https://twitter.com/intent/tweet?text=${escapedTitle}&hashtags=Tofuにんじん&url=${escapedEpisodeUrl}`
 
     return (
       <div>
@@ -19,7 +23,7 @@ export default class EpisodeTemplate extends React.Component {
             { name: 'description', content: subtitle },
             { property: 'og:title', content: post.frontmatter.title },
             { property: 'og:description', content: subtitle },
-            { property: 'og:url', content: this.props.data.site.siteMetadata.siteUrl + this.props.location.pathname }
+            { property: 'og:url', content: episodeUrl }
           ]}
         />
         <Segment>
@@ -43,7 +47,18 @@ export default class EpisodeTemplate extends React.Component {
           <div
             className={styles.episodeContent}
             dangerouslySetInnerHTML={{ __html: post.html }}
-          />
+          >
+          </div>
+          <div className={styles.shareButtons}>
+            <a href={tweetUrl} target='_blank' >
+              <Icon
+                circular link
+                color='blue'
+                name='twitter'
+                size='large'
+              />
+            </a>
+          </div>
         </Segment>
       </div>
     )
